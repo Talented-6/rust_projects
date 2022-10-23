@@ -1,7 +1,13 @@
 fn match_number(input: i32) {
     match input {
-        number @ 4 => println!("{} is an unlucky number in China (sounds close to 死)!", number),
-        number @ 13 => println!("{} is unlucky in North America, lucky in Italy! In bocca al lupo!", number),
+        number @ 4 => println!(
+            "{} is an unlucky number in China (sounds close to 死)!",
+            number
+        ),
+        number @ 13 => println!(
+            "{} is unlucky in North America, lucky in Italy! In bocca al lupo!",
+            number
+        ),
         _ => println!("Looks like a normal number"),
     }
 }
