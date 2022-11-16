@@ -1,6 +1,9 @@
-// .iter() for an iterator of references
-// .iter_mut() for an iterator of mutable references
-// .into_iter() for an iterator of values (not references)
+// 迭代器对象是可变的才能调用next方法。for...in...的语法糖自动取得了所有权并变为可变，所以创建迭代器对象时不用强制可变
+// .iter() for an iterator of references不可变引用
+// .iter_mut() for an iterator of mutable references可变引用
+// .into_iter() for an iterator of values (not references)获取所有权
+// 对iter调用map方法可以产生一个新的迭代器，不会消耗元素
+// 迭代器是惰性的，除非调用消耗型的方法
 
 //Todo about the mutability of struct and enum
 #[derive(Debug, Clone)]
