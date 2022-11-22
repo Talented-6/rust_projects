@@ -18,4 +18,5 @@ impl HelloMacro for Sunface {
 
 fn main() {
     Sunfei::hello_macro();
+    Sunface::hello_macro();
 }

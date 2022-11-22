@@ -1,14 +1,20 @@
-#[macro_export]
-macro_rules! test {
-    ($($x:expr),*) => {{
-        // let temp_vec = vec![..];
-        let mut temp_vec = Vec::new();
-        $(
-            temp_vec.push($x);
-        )*
-        temp_vec
-    }};
-}
+use std::sync::{Arc, Barrier};
+use std::thread;
+// use std::time::Duration;
+use colored::*;
+
 fn main() {
-    println!("{:#?}", test!(9, 4, 3, 4, 5, 8));
+    let mut handles = Vec::with_capacity(6);
+    let barrier = Arc::new(Barrier::new(6));
+    for i in 0..6 {
+        let b = barrier.clone();
+        handles.push(thread::spawn(move || {
+            println!("Before wait {}", i.to_string().green().bold());
+            b.wait();
+            println!("After wait {}", i.to_string().red().bold());
+        }));
+    }
+    for handle in handles {
+        handle.join().unwrap();
+    }
 }
